@@ -1,0 +1,91 @@
+﻿@model LonghornBank.Models.Event
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Event</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EventTitle)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EventTitle)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EventDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EventDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EventLocation)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EventLocation)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.MembersOnly)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.MembersOnly)
+            </dd>
+    
+        </dl>
+    </div>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Committee Name
+            </th>
+        </tr>
+
+        <tr>
+            <td> @ViewBag.AllCommittees </td>
+        </tr>
+
+    </table>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>
+                Member First Name
+            </th>
+            <th>
+                Member Last Name
+            </th>
+        </tr>
+
+        @foreach (var item in Model.Members)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.FirstName)</td>
+                <td>@Html.DisplayFor(modelItem => item.LastName)</td>
+            </tr>
+        }
+    </table>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.EventID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>
